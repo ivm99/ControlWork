@@ -18,10 +18,10 @@ void PrintArray(string[] arrayToPrint)
 
     for (int i = 0; i < arrayToPrint.Length - 1; i++)
     {
-        Console.Write(arrayToPrint[i] + " ; ");
+        Console.Write("\"" + arrayToPrint[i] +"\"" + " , ");
     }
 
-    Console.Write(arrayToPrint[arrayToPrint.Length - 1] + " ]");
+    Console.Write("\"" + arrayToPrint[arrayToPrint.Length - 1] + "\"" + " ]");
     Console.WriteLine();
 }
 
