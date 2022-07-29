@@ -1,6 +1,6 @@
 ﻿string[] NewStringArrayInput(int size)
 {
-    string [] newStringArray = new string [size];
+    string[] newStringArray = new string[size];
 
     for (int i = 0; i < size; i++)
     {
@@ -12,25 +12,58 @@
     return newStringArray;
 }
 
-void PrintArray (string [] arrayToPrint)
+void PrintArray(string[] arrayToPrint)
 {
     Console.Write("[ ");
 
-    for (int i = 0; i < arrayToPrint.Length-1; i++)
+    for (int i = 0; i < arrayToPrint.Length - 1; i++)
     {
-        Console.Write (arrayToPrint[i] + " ; ");
+        Console.Write(arrayToPrint[i] + " ; ");
     }
 
-    Console.Write (arrayToPrint[arrayToPrint.Length-1] + " ]");
+    Console.Write(arrayToPrint[arrayToPrint.Length - 1] + " ]");
     Console.WriteLine();
 }
 
-Console.Write("Введите число элементов массива:");
+string[] SelectThreeSymbolString(string[] stringArray)
+{
+    int size = stringArray.Length;
+    int newSize = 0;
+    int k = 0;
+    string[] newStringArray = new string[newSize];
+
+    for (int i = 0; i < size; i++)
+    {
+        if (stringArray[i].Length <= 3)
+        {
+            newSize++;
+            Array.Resize(ref newStringArray, newSize);
+            newStringArray[k] = stringArray[i];
+            k++;
+
+        }
+    }
+
+
+    return newStringArray;
+}
+
+Console.Write("Введите число элементов массива(положительное число):");
 int size = Convert.ToInt32(Console.ReadLine());
+if (size > 0)
+{
 
-string [] newStringArray = NewStringArrayInput(size);
+    string[] stringArray = NewStringArrayInput(size);
 
-Console.Write("Введенный массив: ");
-PrintArray(newStringArray);
+    Console.Write("Введенный массив: ");
+    PrintArray(stringArray);
 
+    string[] newStringArray = SelectThreeSymbolString(stringArray);
 
+    Console.Write("Отсортированный массив: ");
+    PrintArray(newStringArray);
+}
+else
+{
+    Console.WriteLine("Ошибка. Введенное значение не соответствует требованиям.");
+}
